@@ -23,6 +23,21 @@ public class BstSearch {
      */
     public static <T extends Comparable<T>> boolean contains(BinaryTreeNode<T> root, T target) {
         // Implement here, and make sure to implement tests too!
-        return false;
-    }
+        if (target == null) {
+            throw new NullPointerException("Target value cannot be null");
+        }
+        BinaryTreeNode<T> current = root;
+        while (current != null) {
+            int result = target.compareTo(current.data);
+            if (result == 0) {
+                return true;              
+            } else if (result < 0) {
+                // if target
+                current = current.left;
+            } else {
+                current = current.right;  // target is larger -> only the right subtree can hold it
+            }
+        }
+        return false;       
+}
 }
