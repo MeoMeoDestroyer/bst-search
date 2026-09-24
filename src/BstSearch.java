@@ -32,7 +32,7 @@ public class BstSearch {
             if (result == 0) {
                 return true;              
             } else if (result < 0) {
-                // if target
+                // if target smaller -> only the left subtree can hold it
                 current = current.left;
             } else {
                 current = current.right;  // target is larger -> only the right subtree can hold it
@@ -40,4 +40,21 @@ public class BstSearch {
         }
         return false;       
 }
+
+    public static <T extends Comparable<T>> boolean containsRecursive(BinaryTreeNode<T> root, T target) {
+        if (target == null) {
+            throw new NullPointerException("Target value cannot be null");
+        }
+        if (root == null) {
+            return false;
+        }
+        int result = target.compareTo(root.data);
+        if (result == 0) {
+            return true;
+        } else if (result < 0) {
+            return containsRecursive(root.left, target);
+        } else {
+            return containsRecursive(root.right, target);
+        }
+    }
 }

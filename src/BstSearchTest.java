@@ -14,12 +14,15 @@ public class BstSearchTest {
     @Test
     void testEmptyTreeReturnsFalse() {
         assertFalse(BstSearch.contains(null, 5));
+        assertFalse(BstSearch.containsRecursive(null, 5));
+
     }
 
     @Test
     void testFindsLeaf() {
         // leaf node at the bottom of the tree is found
         assertTrue(BstSearch.contains(buildTree(), 7));
+        assertTrue(BstSearch.containsRecursive(buildTree(), 7));
     }
 
     @Test
@@ -28,6 +31,8 @@ public class BstSearchTest {
         BinaryTreeNode<Integer> root = buildTree();
         assertFalse(BstSearch.contains(root, 1));
         assertFalse(BstSearch.contains(root, 100));
+        assertFalse(BstSearch.containsRecursive(root, 1));
+        assertFalse(BstSearch.containsRecursive(root, 100));
     }
 
 
