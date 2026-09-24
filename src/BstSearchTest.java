@@ -9,4 +9,26 @@ public class BstSearchTest {
                 new BinaryTreeNode<>(11), new BinaryTreeNode<>(15));
         return new BinaryTreeNode<>(10, left, right);
     }
+
+    // Empty tree always returns false
+    @Test
+    void testEmptyTreeReturnsFalse() {
+        assertFalse(BstSearch.contains(null, 5));
+    }
+
+    @Test
+    void testFindsLeaf() {
+        // leaf node at the bottom of the tree is found
+        assertTrue(BstSearch.contains(buildTree(), 7));
+    }
+
+    @Test
+    void testValuesOutsideRangeReturnFalse() {
+        // value smaller than min or larger than max -> return false
+        BinaryTreeNode<Integer> root = buildTree();
+        assertFalse(BstSearch.contains(root, 1));
+        assertFalse(BstSearch.contains(root, 100));
+    }
+
+
 }
